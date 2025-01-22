@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a href="../index.html">Back to station list</a>
+<h1>
+    ${station.name} (${station.crs})
+</h1>
+    % if station.surveys:
+
+% for type in station.types:
+    <h3>${type}</h3>
+
+<ul>
+% for survey in station.surveys_by_type[type]:
+    <li><a href="${survey.id}.html">
+        % if survey.friendly_name:
+        ${survey.friendly_name}
+    % elif survey.alternative_name:
+        ${survey.alternative_name}
+    % else:
+        ${survey.name}
+    % endif
+        </a></li>
+    % endfor
+</ul>
+% endfor
+% else:
+    <h3>No survey for this station</h3>
+% endif
+<a href="../index.html">Back to station list</a>
+</body>
+</html>

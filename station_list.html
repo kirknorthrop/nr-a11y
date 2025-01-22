@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<h1>
+    Station List
+</h1>
+
+<ul>
+% for station in stations:
+    <li><a href="${station.crs}/${station.id}.html">${station.name} (${station.crs})
+    % if not station.surveys:
+        [No survey data]
+    % endif </a></li>
+    % endfor
+</ul>
+
+</body>
+</html>

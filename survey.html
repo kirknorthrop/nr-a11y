@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        % if survey.friendly_name:
+        ${survey.friendly_name}
+    % elif survey.alternative_name:
+        ${survey.alternative_name}
+    % else:
+        ${survey.name}
+    % endif
+    - ${station.name} (${station.crs})</title>
+</head>
+<body>
+<a href="${station.id}.html">Back to ${station.name} index</a>
+<h1>
+    % if survey.friendly_name:
+        ${survey.friendly_name}
+    % elif survey.alternative_name:
+        ${survey.alternative_name}
+    % else:
+        ${survey.name}
+    % endif
+ (${survey.type})
+</h1>
+<h2>${station.name} (${station.crs})</h2>
+
+<ul>
+        % for question in survey.questions:
+    <li><b>${question.question}</b><br>
+        % if question.statement:
+            ${question.statement}
+        % else:
+            ${question.answer}
+        % endif
+        &nbsp;&nbsp;<small style="color: gray">${question.last_updated}</small></li>
+
+    % endfor
+</ul>
+
+<a href="${station.id}.html">Back to ${station.name} index</a>
+</body>
+</html>
