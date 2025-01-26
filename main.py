@@ -41,8 +41,6 @@ if __name__ == "__main__":
     stations, _ = get_stations()
     for station in stations["data"]["resultSet"]:
         print(station["name"], station["crsCode"])
-        if station["crsCode"] in ["EBR"]:
-            continue
         data, requested = get_station_accessibility_surveys(station["id"])
         if requested:
             time.sleep(0.5)
